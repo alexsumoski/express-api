@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`));
 
-exports.checkID = (req, res, next, val) => {
+exports.checkID = (req, res, next) => {
     if (req.params.id * 1 > tours.length) {
         return res.status(404).json({
             status: 'failed',
@@ -26,7 +26,7 @@ exports.getAllTours = (req, res) => {
     console.log(req.requestTime);
     res.status(200).json({
         status: 'success',
-        requestedAt: req.requestTime,
+        requestedAt: req.requestTime, 
         results: tours.length,
         data: {
             tours
